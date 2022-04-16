@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SINlessRunnerLib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SINlessRunnerLib_jar</output-path>
+    <root id="archive" name="SINlessRunnerLib.jar">
+      <element id="module-output" name="SINlessRunnerLib" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20220320/json-20220320.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Util_Library/out/artifacts/Util_Library_jar/Util_Library.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
