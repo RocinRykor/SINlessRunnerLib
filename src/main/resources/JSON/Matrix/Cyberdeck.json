@@ -1,0 +1,74 @@
+{
+  "Allegiance Sigma" : {
+    "deck_rating" : 3,
+    "hardening" : 1,
+    "active_memory" : 200,
+    "storage_memory" : 500,
+    "io_speed" : 100,
+    "response_increase" : 0,
+    "cost" : 14000
+  },
+  "Sony CTY-360–D" : {
+    "deck_rating" : 5,
+    "hardening" : 3,
+    "active_memory" : 300,
+    "storage_memory" : 600,
+    "io_speed" : 200,
+    "response_increase" : 1,
+    "cost" : 70000
+  },
+  "Novatech Hyperdeck–6" : {
+    "deck_rating" : 6,
+    "hardening" : 4,
+    "active_memory" : 500,
+    "storage_memory" : 1000,
+    "io_speed" : 240,
+    "response_increase" : 1,
+    "cost" : 125000
+  },
+  "CMT Avatar" : {
+    "deck_rating" : 7,
+    "hardening" : 4,
+    "active_memory" : 700,
+    "storage_memory" : 1400,
+    "io_speed" : 300,
+    "response_increase" : 1,
+    "cost" : 250000
+  },
+  "Renraku Kraftwerk-8" : {
+    "deck_rating" : 8,
+    "hardening" : 4,
+    "active_memory" : 1000,
+    "storage_memory" : 2000,
+    "io_speed" : 360,
+    "response_increase" : 2,
+    "cost" : 400000
+  },
+  "Transys Highlander" : {
+    "deck_rating" : 9,
+    "hardening" : 4,
+    "active_memory" : 1500,
+    "storage_memory" : 2500,
+    "io_speed" : 400,
+    "response_increase" : 2,
+    "cost" : 600000
+  },
+  "Novatech Slimcase-10" : {
+    "deck_rating" : 10,
+    "hardening" : 5,
+    "active_memory" : 2000,
+    "storage_memory" : 2500,
+    "io_speed" : 480,
+    "response_increase" : 2,
+    "cost" : 960000
+  },
+  "Fairlight Excalibur" : {
+    "deck_rating" : 12,
+    "hardening" : 6,
+    "active_memory" : 3000,
+    "storage_memory" : 5000,
+    "io_speed" : 600,
+    "response_increase" : 3,
+    "cost" : 1500000
+  }
+}

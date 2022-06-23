@@ -1,6 +1,6 @@
 package studio.rrprojects.srl.creation.priority;
 
-import studio.rrprojects.srl.FileConstants;
+import studio.rrprojects.srl.constants.FileConstants;
 
 public class PriorityConstants {
     //Priority Terms
@@ -15,5 +15,4 @@ public class PriorityConstants {
 
     //Resource Files
     //public static final String METATYPE_TABLE = "metatype_differences.json";
-    public static final String PRIORITY_TABLE_FILE = FileConstants.RESOURCE_MISC + "CORE_Priority_Table.json";
 }

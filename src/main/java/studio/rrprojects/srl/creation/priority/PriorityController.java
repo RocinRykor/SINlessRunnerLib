@@ -2,6 +2,7 @@ package studio.rrprojects.srl.creation.priority;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import studio.rrprojects.srl.constants.FileConstants;
 import studio.rrprojects.util_library.DebugUtils;
 import studio.rrprojects.util_library.FileUtil;
 
@@ -27,7 +28,7 @@ public class PriorityController {
     }
 
     private void LoadPriorityFile() {
-        String filePath =  PriorityConstants.PRIORITY_TABLE_FILE;
+        String filePath =  FileConstants.PRIORITY_TABLE_JSON;
         DebugUtils.ProgressNormalMsg("Loading Priority Table");
 
         try {
