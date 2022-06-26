@@ -26,14 +26,14 @@ public class CyberDeck {
         }
     }
 
-    private String model;
-    private int rating;
-    private int hardening;
-    private int activeMemory;
-    private int storageMemory;
-    private int ioSpeed;
-    private int responseIncrease;
-    private int baseCost;
+    private final String model;
+    private final int rating;
+    private final int hardening;
+    private final int activeMemory;
+    private final int storageMemory;
+    private final int ioSpeed;
+    private final int responseIncrease;
+    private final int baseCost;
 
     //Constants from JSON DATA
     private final static String DECK_RATING = "deck_rating";
