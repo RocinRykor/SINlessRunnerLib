@@ -10,12 +10,7 @@ public class Main {
     public static void main(String[] args) {
         MatrixController controller = new MatrixController();
 
-        List<String> deckList = controller.getListDeckNameOfficial();
-        DebugUtils.ProgressNormalMsg(deckList.toString());
 
-        for (String deckModel : deckList) {
-            DebugUtils.VariableMsg(controller.getCyberDeckFromModel(deckModel) + "\n\n");
-        }
 
     }
 }
