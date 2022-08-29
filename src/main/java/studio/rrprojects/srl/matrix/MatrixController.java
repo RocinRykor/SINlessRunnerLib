@@ -1,10 +1,11 @@
 package studio.rrprojects.srl.matrix;
 
 import org.json.JSONObject;
+import studio.rrprojects.srl.constants.FileConstants;
+import studio.rrprojects.srl.matrix.utilities.*;
 import studio.rrprojects.util_library.FileUtil;
 import studio.rrprojects.util_library.JSONUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +41,41 @@ public class MatrixController {
         }
     }
 
-    private final JSONObject jsonCyberDecks;
+    private final JSONObject jsonCyberdecks = FileUtil.getJsonFromResource(FileConstants.CYBERDECK_JSON);;
+    private final JSONObject jsonCyberdeckUtils = FileUtil.getJsonFromResource(FileConstants.CYBERDECK_UTILITIES);
     private List<String> listDeckNameOfficial = new ArrayList<>();
+    private List<CyberDeckUtility> masterListCyberdeckUtilities = new ArrayList<>();
 
     public MatrixController() {
-        jsonCyberDecks = FileUtil.getJsonFromResource(File.separator + "JSON" + File.separator + "Matrix" + File.separator + "Cyberdeck.json");
-        PopulateCyberDeckList();
+        PopulateCyberdeckList();
+        PopulateCyberdeckUtilities();
     }
 
-    private void PopulateCyberDeckList() {
+    private void PopulateCyberdeckUtilities() {
+        jsonCyberdeckUtils.keySet().forEach(key -> {
+            JSONObject jsonOnj = jsonCyberdeckUtils.getJSONObject(key);
+            masterListCyberdeckUtilities.add(processCyberdeckUtility(key, jsonOnj));
+        });
+    }
+
+    private CyberDeckUtility processCyberdeckUtility(String name, JSONObject jsonObject) {
+        String utilityType = jsonObject.getString("type");
+
+        if (utilityType.equalsIgnoreCase(CyberDeckUtility.TYPE_OPERATIONAL)) {
+            return new OperationalUtility(name, jsonObject);
+        } else if (utilityType.equalsIgnoreCase(CyberDeckUtility.TYPE_SPECIAL)) {
+            return new SpecialUtility(name, jsonObject);
+        } else if (utilityType.equalsIgnoreCase(CyberDeckUtility.TYPE_OFFENSIVE)) {
+            return new OffensiveUtility(name, jsonObject);
+        } else if (utilityType.equalsIgnoreCase(CyberDeckUtility.TYPE_DEFENSIVE)) {
+            return new DefensiveUtility(name, jsonObject);
+        } else {
+            return new CyberDeckUtility(name, jsonObject);
+        }
+
+    }
+
+    private void PopulateCyberdeckList() {
         for (DECK_MODELS deck_model: DECK_MODELS.values()) {
             listDeckNameOfficial.add(deck_model.toString());
         }
@@ -59,10 +86,14 @@ public class MatrixController {
     }
 
     public CyberDeck getCyberDeckFromModel(String model) {
-        JSONObject tmpJSON = JSONUtil.getJSONObject(jsonCyberDecks, model, null);
+        JSONObject tmpJSON = JSONUtil.getJSONObject(jsonCyberdecks, model, null);
         if (tmpJSON == null) {
             return null;
         }
         return CyberDeck.NewDeckFromJSON(model, tmpJSON);
+    }
+
+    public List<CyberDeckUtility> getMasterListCyberdeckUtilities() {
+        return masterListCyberdeckUtilities;
     }
 }
