@@ -1,21 +1,12 @@
 package studio.rrprojects.srl;
 
-import studio.rrprojects.srl.matrix.MatrixController;
-import studio.rrprojects.srl.matrix.utilities.CyberDeckUtility;
-import studio.rrprojects.util_library.DebugUtils;
-
-import java.util.List;
+import studio.rrprojects.srl.creation.priority.PriorityController;
 
 public class Main {
 
     public static void main(String[] args) {
-        MatrixController controller = new MatrixController();
+        PriorityController priorityController = new PriorityController();
 
-
-        List<CyberDeckUtility> deckUtils = controller.getMasterListCyberdeckUtilities();
-
-        for (CyberDeckUtility utility : deckUtils) {
-            DebugUtils.ProgressNormalMsg(utility.toString());
-        }
+        priorityController.getMasterPriorityMap().forEach((k, v) -> System.out.println("Key : " + k + ", Value : " + v));
     }
 }

@@ -40,6 +40,9 @@ public class PriorityController {
 
     }
 
+    public HashMap<String, PriorityLevelGroup> getMasterPriorityMap() {
+        return masterPriorityMap;
+    }
 }
 
 
