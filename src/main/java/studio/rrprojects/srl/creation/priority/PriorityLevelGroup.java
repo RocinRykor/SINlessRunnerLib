@@ -13,15 +13,51 @@
 package studio.rrprojects.srl.creation.priority;
 
 import org.json.JSONObject;
+import studio.rrprojects.srl.creation.priority.element.PriorityElement;
+import studio.rrprojects.srl.creation.priority.element.StringPriorityElement;
 import studio.rrprojects.util_library.DebugUtils;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 public class PriorityLevelGroup {
-    public PriorityLevelGroup(String key, JSONObject jsonObject) {
+    private final HashMap<String, Object> priorityElementTable;
+
+    public PriorityLevelGroup(String levelKey, JSONObject jsonObject) {
+        /*
+        A Priority Level Group consists of multiple Priority Elements for a given level.
+        For example at level 'C' the following options are available, each of which is considered a Priority Element:
+        Magic: Mundane
+        Race: Elf/Troll
+        Skills: 34 Points
+        Attributes: 24 Points
+        Resources: 90,000 Nuyen
+         */
+
+        // Turn JSON data into a table of PriorityElements
+        priorityElementTable = new HashMap<>();
+
+        for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
+            String categoryKey = it.next();
+            Object value = jsonObject.get(categoryKey);
+
+            // Here we are going to convert the
+            if (categoryKey.equalsIgnoreCase(PriorityConstants.MAGIC) || categoryKey.equalsIgnoreCase(PriorityConstants.RACE)) {
+                StringPriorityElement processedValue = new StringPriorityElement(levelKey, categoryKey, value);
+            }
 
 
-        //TODO 9/20/22 -> Turn JSON data into a table of PriorityElements
+
+            priorityElementTable.put(categoryKey, value);
+        }
 
         //DEBUG
-        DebugUtils.ProgressNormalMsg(getClass().getSimpleName() + " - Key: " + key + " | JSON: " + jsonObject.toString());
+        DebugUtils.UnknownMsg(getClass().getSimpleName() + " - Level: " + levelKey + " | JSON: " + jsonObject);
+        DebugUtils.VariableMsg(priorityElementTable.toString());
+    }
+
+    @Override
+    public String toString() {
+        return priorityElementTable.toString();
     }
 }

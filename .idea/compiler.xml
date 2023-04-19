@@ -9,8 +9,5 @@
         <module name="SINlessRunnerLib" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SINlessRunnerLib" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>
