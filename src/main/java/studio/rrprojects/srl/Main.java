@@ -9,6 +9,6 @@ public class Main {
 //        PriorityController priorityController = new PriorityController();
 
 //        priorityController.getMasterPriorityMap().forEach((k, v) -> System.out.println("Key : " + k + ", Value : " + v));
-        StoryGeneratorController SGC = new StoryGeneratorController();
+//        StoryGeneratorController SGC = new StoryGeneratorController();
     }
 }
