@@ -54,8 +54,8 @@ public class PriorityLevelGroup {
         }
 
         //DEBUG
-        DebugUtils.UnknownMsg(getClass().getSimpleName() + " - Level: " + levelKey + " | JSON: " + jsonObject);
-        DebugUtils.VariableMsg(priorityElementTable.toString());
+//        DebugUtils.UnknownMsg(getClass().getSimpleName() + " - Level: " + levelKey + " | JSON: " + jsonObject);
+//        DebugUtils.VariableMsg(priorityElementTable.toString());
     }
 
 

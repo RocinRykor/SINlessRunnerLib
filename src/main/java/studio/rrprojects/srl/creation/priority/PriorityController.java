@@ -1,6 +1,5 @@
 package studio.rrprojects.srl.creation.priority;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import studio.rrprojects.srl.constants.FileConstants;
 import studio.rrprojects.util_library.DebugUtils;
@@ -29,13 +28,13 @@ public class PriorityController {
 
     private void LoadPriorityFile() {
         String filePath =  FileConstants.PRIORITY_TABLE_JSON;
-        DebugUtils.ProgressNormalMsg("Loading Priority Table");
+//        DebugUtils.ProgressNormalMsg("Loading Priority Table");
 
         try {
             priorityJson = FileUtil.getJsonFromResource(filePath);
-            DebugUtils.ProgressNormalMsg("Loaded Priority Table");
+//            DebugUtils.ProgressNormalMsg("Loaded Priority Table");
         } catch (NullPointerException e) {
-            DebugUtils.ErrorMsg("FAILURE! - " + e);
+//            DebugUtils.ErrorMsg("FAILURE! - " + e);
         }
 
     }
