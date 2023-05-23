@@ -58,7 +58,9 @@ public class PriorityLevelGroup {
 //        DebugUtils.VariableMsg(priorityElementTable.toString());
     }
 
-
+    public HashMap<String, PriorityElement> getPriorityElementTable() {
+        return priorityElementTable;
+    }
 
     @Override
     public String toString() {
