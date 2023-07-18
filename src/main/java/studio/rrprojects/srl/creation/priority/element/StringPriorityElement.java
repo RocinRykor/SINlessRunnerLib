@@ -5,6 +5,7 @@ import studio.rrprojects.util_library.JSONUtil;
 import studio.rrprojects.util_library.TextUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StringPriorityElement extends PriorityElement{
     ArrayList<String> availableOptions = new ArrayList<>();
@@ -29,7 +30,32 @@ public class StringPriorityElement extends PriorityElement{
     }
 
     @Override
+    public String getDisplayString() {
+        String display = "";
+
+        if (availableOptions.size() == 1) {
+            display = availableOptions.get(0);
+        } else if (availableOptions.size() > 1) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < availableOptions.size() - 1; i++) {
+                stringBuilder.append(availableOptions.get(i)).append(" / ");
+            }
+            stringBuilder.append(availableOptions.get(availableOptions.size() - 1));
+            display = stringBuilder.toString();
+        }
+
+        return TextUtils.titleCase(super.getCategoryKey()) + ": " + display;
+    }
+
+    @Override
     public String toString() {
         return availableOptions.toString();
+    }
+
+    @Override
+    public HashMap<String, Object> getAsHashMap() {
+        HashMap<String, Object> tmp = new HashMap<>();
+        tmp.put(getCategoryKey(), getAvailableOptions());
+        return tmp;
     }
 }

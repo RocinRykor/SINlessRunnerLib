@@ -23,6 +23,7 @@ import java.util.Iterator;
 
 public class PriorityLevelGroup {
     private final HashMap<String, PriorityElement> priorityElementTable;
+    private final String levelKey;
 
     public PriorityLevelGroup(String levelKey, JSONObject jsonObject) {
         /*
@@ -34,6 +35,7 @@ public class PriorityLevelGroup {
         Attributes: 24 Points
         Resources: 90,000 Nuyen
          */
+        this.levelKey = levelKey;
 
         // Turn JSON data into a table of PriorityElements
         priorityElementTable = new HashMap<>();
@@ -60,6 +62,10 @@ public class PriorityLevelGroup {
 
     public HashMap<String, PriorityElement> getPriorityElementTable() {
         return priorityElementTable;
+    }
+
+    public String getLevelKey() {
+        return levelKey;
     }
 
     @Override

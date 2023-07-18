@@ -3,8 +3,10 @@ package studio.rrprojects.srl.creation.priority.element;
 import studio.rrprojects.srl.creation.priority.PriorityConstants;
 import studio.rrprojects.util_library.TextUtils;
 
+import java.util.HashMap;
+
 public class IntPriorityElement extends PriorityElement {
-    String displayString;
+    String prettyString;
     int rawInt;
 
     /**
@@ -16,14 +18,14 @@ public class IntPriorityElement extends PriorityElement {
         rawInt = (Integer) rawValue;
 
         if (categoryKey.equalsIgnoreCase(PriorityConstants.RESOURCES)) {
-            displayString = TextUtils.IntToNuyen(rawInt);
+            prettyString = TextUtils.IntToNuyen(rawInt);
         } else {
-            displayString = rawInt + " Points";
+            prettyString = rawInt + " Points";
         }
     }
 
-    public String getDisplayString() {
-        return displayString;
+    public String getPrettyString() {
+        return prettyString;
     }
 
     public int getRawInt() {
@@ -32,6 +34,18 @@ public class IntPriorityElement extends PriorityElement {
 
     @Override
     public String toString() {
-        return displayString;
+        return prettyString;
+    }
+
+    @Override
+    public String getDisplayString() {
+        return TextUtils.titleCase(super.getCategoryKey()) + ": " + prettyString;
+    }
+
+    @Override
+    public HashMap<String, Object> getAsHashMap() {
+        HashMap<String, Object> tmp = new HashMap<>();
+        tmp.put(getCategoryKey(), getRawInt());
+        return tmp;
     }
 }
