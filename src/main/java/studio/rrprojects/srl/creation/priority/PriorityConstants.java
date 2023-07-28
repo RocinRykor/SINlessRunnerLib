@@ -14,5 +14,5 @@ public class PriorityConstants {
     public static final String[] PRIORITIES = {RACE, MAGIC, ATTRIBUTES, SKILLS, RESOURCES};
 
     //Resource Files
-    //public static final String METATYPE_TABLE = "metatype_differences.json";
+    //public static final String METATYPE_TABLE = "CORE_Metatypes.json";
 }
