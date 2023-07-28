@@ -16,7 +16,10 @@
             "intelligence": 9,
             "charisma": 9
         },
-        "racial_modifiers": {}
+        "racial_modifiers": {
+            "attributes": {},
+            "bioware": {}
+        }
     },
     "dwarf": {
         "natural_attribute_limit": {
@@ -130,8 +133,7 @@
             },
             "bioware": {
                 "eyes": "thermographic vision",
-                "right_arm": "reach",
-                "left_arm": "reach",
+                "limbs": "reach",
                 "torso": "dermal armor"
             }
         }
