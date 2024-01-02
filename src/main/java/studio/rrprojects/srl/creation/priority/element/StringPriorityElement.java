@@ -55,7 +55,7 @@ public class StringPriorityElement extends PriorityElement{
     @Override
     public HashMap<String, Object> getAsHashMap() {
         HashMap<String, Object> tmp = new HashMap<>();
-        tmp.put(getCategoryKey(), getAvailableOptions());
+        tmp.put(getCategoryKey(), getRawString());
         return tmp;
     }
 }

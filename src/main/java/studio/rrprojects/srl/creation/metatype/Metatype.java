@@ -10,7 +10,7 @@ public class Metatype {
     private AttributeCollection racialModifiedLimit;
     private RacialModifiers racialModifiers;
 
-    // Constructors, getters, and setters can be added here.
+
     public Metatype(String metatypeName, JSONObject rawJSON) {
         this.name = metatypeName;
         DebugUtils.ErrorMsg("Metatype Name: " + metatypeName);
@@ -33,8 +33,6 @@ public class Metatype {
     }
 
     private RacialModifiers createRacialModifiersCollections(JSONObject jsonObject) {
-
-
         AttributeCollection attributeModifiers = createAttributeCollection(jsonObject.optJSONObject("attributes"));
         BiowareModifiers biowareModifiers = createBiowareModifiers(jsonObject.optJSONObject("bioware"));
 
@@ -49,113 +47,23 @@ public class Metatype {
         return new BiowareModifiers(eyes, torso, limbs);
     }
 
-    // Getters and setters for name, rawJSON, naturalAttributeLimit, racialModifiedLimit, and racialModifiers can be added here.
-}
-
-class AttributeCollection {
-    private int body;
-    private int quickness;
-    private int strength;
-    private int willpower;
-    private int intelligence;
-    private int charisma;
-
-    public AttributeCollection(int body, int quickness, int strength, int willpower, int intelligence, int charisma) {
-        this.body = body;
-        this.quickness = quickness;
-        this.strength = strength;
-        this.willpower = willpower;
-        this.intelligence = intelligence;
-        this.charisma = charisma;
+    public String getName() {
+        return name;
     }
 
-    public int getBody() {
-        return body;
+    public JSONObject getRawJSON() {
+        return rawJSON;
     }
 
-    public int getQuickness() {
-        return quickness;
+    public AttributeCollection getNaturalAttributeLimit() {
+        return naturalAttributeLimit;
     }
 
-    public int getStrength() {
-        return strength;
+    public AttributeCollection getRacialModifiedLimit() {
+        return racialModifiedLimit;
     }
 
-    public int getWillpower() {
-        return willpower;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public int getCharisma() {
-        return charisma;
-    }
-}
-
-class RacialModifiers {
-    private AttributeCollection attributes;
-    private BiowareModifiers bioware;
-
-    public RacialModifiers(AttributeCollection attributes, BiowareModifiers bioware) {
-        this.attributes = attributes;
-        this.bioware = bioware;
-    }
-
-    public AttributeCollection getAttributes() {
-        return attributes;
-    }
-
-    public BiowareModifiers getBioware() {
-        return bioware;
-    }
-}
-
-class AttributeModifiers {
-    private int body;
-    private int strength;
-    private int willpower;
-
-    public AttributeModifiers(int body, int strength, int willpower) {
-        this.body = body;
-        this.strength = strength;
-        this.willpower = willpower;
-    }
-
-    public int getBody() {
-        return body;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getWillpower() {
-        return willpower;
-    }
-}
-
-class BiowareModifiers {
-    private String eyes;
-    private String torso;
-    private String limbs;
-
-    public BiowareModifiers(String eyes, String torso, String limbs) {
-        this.eyes = eyes;
-        this.torso = torso;
-        this.limbs = limbs;
-    }
-
-    public String getEyes() {
-        return eyes;
-    }
-
-    public String getTorso() {
-        return torso;
-    }
-
-    public String getLimbs() {
-        return limbs;
+    public RacialModifiers getRacialModifiers() {
+        return racialModifiers;
     }
 }

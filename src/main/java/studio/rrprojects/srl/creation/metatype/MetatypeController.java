@@ -34,7 +34,7 @@ public class MetatypeController {
     private final static String ELF = "elf";
     private final static String TROLL = "troll";
 
-    private HashMap<String, Object> metatypeElementMap = new HashMap<>();
+    private HashMap<String, Metatype> metatypeElementMap = new HashMap<>();
     private JSONObject metatypesJSON;
 
 
@@ -44,6 +44,8 @@ public class MetatypeController {
         for (String metatypeName : metatypesJSON.keySet()) {
             JSONObject jsonObject = metatypesJSON.getJSONObject(metatypeName);
             Metatype metatype = new Metatype(metatypeName, jsonObject);
+
+            metatypeElementMap.put(metatypeName, metatype);
 
             DebugUtils.ProgressNormalMsg(metatype.toString());
         }
@@ -62,4 +64,16 @@ public class MetatypeController {
         }
 
     }
+
+    public Metatype getMetaTypeByName(String metatypeName) {
+        String key = metatypeName.toLowerCase();
+
+        if (metatypeElementMap.containsKey(key)) {
+            DebugUtils.ProgressNormalMsg("FOUND:" + key);
+            return metatypeElementMap.get(key);
+            } else {
+                DebugUtils.ErrorMsg("WARNING: Metatype key '" + key + "' does not exist");
+                return null;
+            }
+        }
 }
