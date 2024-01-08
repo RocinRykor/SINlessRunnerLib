@@ -47,7 +47,7 @@ public class MetatypeController {
 
             metatypeElementMap.put(metatypeName, metatype);
 
-            DebugUtils.ProgressNormalMsg(metatype.toString());
+//            DebugUtils.ProgressNormalMsg(metatype.toString());
         }
 
     }
@@ -69,7 +69,7 @@ public class MetatypeController {
         String key = metatypeName.toLowerCase();
 
         if (metatypeElementMap.containsKey(key)) {
-            DebugUtils.ProgressNormalMsg("FOUND:" + key);
+//            DebugUtils.ProgressNormalMsg("FOUND:" + key);
             return metatypeElementMap.get(key);
             } else {
                 DebugUtils.ErrorMsg("WARNING: Metatype key '" + key + "' does not exist");

@@ -1,27 +1,26 @@
 package studio.rrprojects.srl.creation.metatype;
 
 import org.json.JSONObject;
-import studio.rrprojects.util_library.DebugUtils;
 
 public class Metatype {
     private String name;
     private JSONObject rawJSON;
-    private AttributeCollection naturalAttributeLimit;
-    private AttributeCollection racialModifiedLimit;
+    private BasicAttributeCollection naturalAttributeLimit;
+    private BasicAttributeCollection racialModifiedLimit;
     private RacialModifiers racialModifiers;
 
 
     public Metatype(String metatypeName, JSONObject rawJSON) {
         this.name = metatypeName;
-        DebugUtils.ErrorMsg("Metatype Name: " + metatypeName);
+//        DebugUtils.ErrorMsg("Metatype Name: " + metatypeName);
         this.rawJSON = rawJSON;
         this.naturalAttributeLimit = createAttributeCollection(rawJSON.getJSONObject("natural_attribute_limit"));
         this.racialModifiedLimit = createAttributeCollection(rawJSON.getJSONObject("racial_modified_limit"));
         this.racialModifiers = createRacialModifiersCollections(rawJSON.optJSONObject("racial_modifiers"));
     }
 
-    private AttributeCollection createAttributeCollection(JSONObject jsonObject) {
-        DebugUtils.VariableMsg(String.valueOf(jsonObject));
+    private BasicAttributeCollection createAttributeCollection(JSONObject jsonObject) {
+//        DebugUtils.VariableMsg(String.valueOf(jsonObject));
         int body = jsonObject.optInt("body", 0);
         int quickness = jsonObject.optInt("quickness", 0);
         int strength = jsonObject.optInt("strength", 0);
@@ -29,11 +28,11 @@ public class Metatype {
         int intelligence = jsonObject.optInt("intelligence", 0);
         int charisma = jsonObject.optInt("charisma", 0);
 
-        return new AttributeCollection(body, quickness, strength, willpower, intelligence, charisma);
+        return new BasicAttributeCollection(body, quickness, strength, willpower, intelligence, charisma);
     }
 
     private RacialModifiers createRacialModifiersCollections(JSONObject jsonObject) {
-        AttributeCollection attributeModifiers = createAttributeCollection(jsonObject.optJSONObject("attributes"));
+        BasicAttributeCollection attributeModifiers = createAttributeCollection(jsonObject.optJSONObject("attributes"));
         BiowareModifiers biowareModifiers = createBiowareModifiers(jsonObject.optJSONObject("bioware"));
 
         return new RacialModifiers(attributeModifiers, biowareModifiers);
@@ -55,15 +54,22 @@ public class Metatype {
         return rawJSON;
     }
 
-    public AttributeCollection getNaturalAttributeLimit() {
+    public BasicAttributeCollection getNaturalAttributeLimit() {
         return naturalAttributeLimit;
     }
 
-    public AttributeCollection getRacialModifiedLimit() {
+    public BasicAttributeCollection getRacialModifiedLimit() {
         return racialModifiedLimit;
     }
 
     public RacialModifiers getRacialModifiers() {
         return racialModifiers;
+    }
+
+    @Override
+    public String toString() {
+        return "Metatype{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

@@ -1,15 +1,15 @@
 package studio.rrprojects.srl.creation.metatype;
 
 public class RacialModifiers {
-    private AttributeCollection attributes;
+    private BasicAttributeCollection attributes;
     private BiowareModifiers bioware;
 
-    public RacialModifiers(AttributeCollection attributes, BiowareModifiers bioware) {
+    public RacialModifiers(BasicAttributeCollection attributes, BiowareModifiers bioware) {
         this.attributes = attributes;
         this.bioware = bioware;
     }
 
-    public AttributeCollection getAttributes() {
+    public BasicAttributeCollection getAttributes() {
         return attributes;
     }
 

@@ -7,5 +7,7 @@ public class SkillsModule extends CharacterModule {
 
     public void processPriorityOption(Object skillPointValue) {
         creationBaseSkillPoints = (int) skillPointValue;
+
+
     }
 }
