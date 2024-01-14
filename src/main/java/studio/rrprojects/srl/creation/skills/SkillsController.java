@@ -90,4 +90,24 @@ public class SkillsController {
                     '}';
         }
     }
+
+    public JSONObject getActiveSkillsJSON() {
+        return activeSkillsJSON;
+    }
+
+    public JSONObject getKnowledgeSkillsJSON() {
+        return knowledgeSkillsJSON;
+    }
+
+    public JSONObject getLanguageSkillsJSON() {
+        return languageSkillsJSON;
+    }
+
+    public ArrayList<Object> getSkillGroupList() {
+        return skillGroupList;
+    }
+
+    public LinkedHashMap<String, SkillMap> getMasterSkillMap() {
+        return masterSkillMap;
+    }
 }
