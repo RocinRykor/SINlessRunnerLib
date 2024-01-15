@@ -47,17 +47,52 @@ public class SkillObject {
         baseLevel = JSONUtil.getInt(skill, "value", 1);
     }
 
-    public String getCategory() {
-        //TODO IMPLEMENT
-        return null;
-    }
-
     public String getSkillName() {
         return skillName;
     }
 
     public String getSkillType() {
         return skillType;
+    }
+
+    public String getBaseAttribute() {
+        return baseAttribute;
+    }
+
+    public String getLinkedAttribute() {
+        return linkedAttribute;
+    }
+
+    public boolean isBuildRepairAvailable() {
+        return isBuildRepairAvailable;
+    }
+
+    public String getDefaults() {
+        return defaults;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public ArrayList<String> getAvailableSpecializations() {
+        return availableSpecializations;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getBaseLevel() {
+        return baseLevel;
+    }
+
+    public int getActualLevel() {
+        return actualLevel;
     }
 
     @Override
