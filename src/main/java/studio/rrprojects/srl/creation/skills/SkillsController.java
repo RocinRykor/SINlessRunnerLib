@@ -5,9 +5,12 @@ import studio.rrprojects.srl.constants.FileConstants;
 import studio.rrprojects.srl.keywords.SkillsKeywords;
 import studio.rrprojects.util_library.FileUtil;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class SkillsController {
 
@@ -21,6 +24,7 @@ public class SkillsController {
     private JSONObject languageSkillsJSON;
     private ArrayList<Object> skillGroupList = new ArrayList<>();
     private LinkedHashMap<String, SkillMap> masterSkillMap = new LinkedHashMap<>();
+
 
     public SkillsController() {
         loadSkillsFile();
@@ -50,6 +54,46 @@ public class SkillsController {
         masterSkillMap.put(SkillsKeywords.ACTIVE, new SkillMap(activeSkillsJSON, SkillsKeywords.ACTIVE));
         masterSkillMap.put(SkillsKeywords.KNOWLEDGE, new SkillMap(knowledgeSkillsJSON, SkillsKeywords.KNOWLEDGE));
         masterSkillMap.put(SkillsKeywords.LANGUAGE, new SkillMap(languageSkillsJSON, SkillsKeywords.LANGUAGE));
+    }
+
+    public DefaultTreeModel getMasterMapAsTree() {
+        DefaultMutableTreeNode masterNode = new DefaultMutableTreeNode();
+
+        //Create the hash map that we will use for organizing
+
+        LinkedHashMap<String, DefaultMutableTreeNode> skillTypeNodeMap = new LinkedHashMap<>();
+
+        skillTypeNodeMap.put(SkillsKeywords.ACTIVE, new DefaultMutableTreeNode(SkillsKeywords.ACTIVE));
+        skillTypeNodeMap.put(SkillsKeywords.KNOWLEDGE, new DefaultMutableTreeNode(SkillsKeywords.KNOWLEDGE));
+        skillTypeNodeMap.put(SkillsKeywords.LANGUAGE, new DefaultMutableTreeNode(SkillsKeywords.LANGUAGE));
+
+        for (Map.Entry<String, SkillMap> skillMapEntry : masterSkillMap.entrySet()) {
+            String skillType = skillMapEntry.getKey();
+            SkillMap skillMap = skillMapEntry.getValue();
+
+            if (skillType.equalsIgnoreCase(SkillsKeywords.LANGUAGE)) {
+                for (SkillObject skillObject : skillMap.getListSkillsMaster()) {
+                    skillTypeNodeMap.get(skillType).add(new DefaultMutableTreeNode(skillObject));
+                }
+            } else {
+                for (Map.Entry<String, ArrayList<SkillObject>> skillMapCategory : skillMap.getMapSkillsByCategory().entrySet()) {
+                    String categoryName = skillMapCategory.getKey();
+                    ArrayList<SkillObject> skillObjectList = skillMapCategory.getValue();
+
+                    DefaultMutableTreeNode baseNode = skillTypeNodeMap.get(skillType);
+                    DefaultMutableTreeNode node = new DefaultMutableTreeNode(categoryName);
+
+                    for (SkillObject skillObject : skillObjectList) {
+                        node.add(new DefaultMutableTreeNode(skillObject));
+                    }
+                    baseNode.add(node);
+                }
+
+            }
+            masterNode.add(skillTypeNodeMap.get(skillType));
+        }
+
+        return new DefaultTreeModel(masterNode);
     }
 
     private class SkillGroup {
