@@ -44,8 +44,6 @@ public class SkillObject {
 
         category = TextUtils.titleCase(skill.getString("category"));
 
-//        selectedSpecializations = new ArrayList<>();
-
         baseLevel = JSONUtil.getInt(skill, "value", 1);
     }
 
