@@ -49,7 +49,6 @@ public class CharacterContainer {
 
     /**
      * Populate the CharacterContainer with information needed in creating a new character starting with the priority selection
-     * TODO: Replace priority map with ArrayList of Priority Elements so that its more intuitive, currently this way for debug purposes
      * @param priorityMap - Priority selection for new character
      */
     public void generateFromPriority(HashMap<String, Object> priorityMap) {

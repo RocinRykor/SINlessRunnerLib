@@ -20,13 +20,23 @@ public class SkillObject {
     private String source;
     private ArrayList<String> availableSpecializations;
     private String category;
-    private int baseLevel;
-    private int actualLevel;
-//    private ArrayList<SpecializationContainer> selectedSpecializations;
 
     public SkillObject(String skillName, String skillType) {
         this.skillName = TextUtils.titleCase(skillName);
         this.skillType = TextUtils.titleCase(skillType);
+    }
+
+    public void cloneFromExistingSkill(SkillObject skillObject) {
+        this.skillName = skillObject.getSkillName();
+        this.skillType = skillObject.getSkillType();
+        this.baseAttribute = skillObject.getBaseAttribute();
+        this.linkedAttribute = skillObject.getLinkedAttribute();
+        this.isBuildRepairAvailable = skillObject.isBuildRepairAvailable();
+        this.defaults = skillObject.getDefaults();
+        this.description = skillObject.getDescription();
+        this.source = skillObject.getSource();
+        this.availableSpecializations = skillObject.getAvailableSpecializations();
+        this.category = skillObject.getCategory();
     }
 
     public void processJSONObject(JSONObject skill) {
@@ -43,8 +53,6 @@ public class SkillObject {
         availableSpecializations = processSpecializationString(specializationString);
 
         category = TextUtils.titleCase(skill.getString("category"));
-
-        baseLevel = JSONUtil.getInt(skill, "value", 1);
     }
 
     private ArrayList<String> processSpecializationString(String string) {
@@ -76,6 +84,10 @@ public class SkillObject {
         return linkedAttribute;
     }
 
+    public void setLinkedAttribute(String linkedAttribute) {
+        this.linkedAttribute = linkedAttribute;
+    }
+
     public boolean isBuildRepairAvailable() {
         return isBuildRepairAvailable;
     }
@@ -98,14 +110,6 @@ public class SkillObject {
 
     public String getCategory() {
         return category;
-    }
-
-    public int getBaseLevel() {
-        return baseLevel;
-    }
-
-    public int getActualLevel() {
-        return actualLevel;
     }
 
     @Override
