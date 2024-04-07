@@ -43,7 +43,7 @@ public class SkillObject {
         baseAttribute = TextUtils.titleCase(JSONUtil.getString(skill, "attribute", AttributeKeywords.INTELLIGENCE));
         linkedAttribute = baseAttribute;
 
-        isBuildRepairAvailable = JSONUtil.getBool(skill, "build_repair", false);
+        isBuildRepairAvailable = JSONUtil.getBool(skill, "can_be_build_repair", false);
 
         defaults = TextUtils.titleCase(JSONUtil.getString(skill, "defaults", "None"));
         description = skill.getString("description");
