@@ -54,6 +54,32 @@ public class OwnedSkill extends SkillObject {
         return output;
     }
 
+    public Boolean getBuildRepair() {
+        return isBuildRepair;
+    }
+
+    public ArrayList<SpecializationObject> getSpecializationList() {
+        return specializationList;
+    }
+
+    public int getSkillLevel() {
+        return skillLevel;
+    }
+
+    public int getCreationBaseLevel() {
+        return creationBaseLevel;
+    }
+
+    public int calculateCreationCost(int attributeScore) {
+        int baseValue = creationBaseLevel;
+        if (baseValue <= attributeScore) {
+            return baseValue;
+        } else {
+            int remainder = baseValue - attributeScore;
+            return attributeScore + (remainder * 2);
+        }
+    }
+
     private class SpecializationObject {
         private String specializationName;
         private int specializationLevel;
