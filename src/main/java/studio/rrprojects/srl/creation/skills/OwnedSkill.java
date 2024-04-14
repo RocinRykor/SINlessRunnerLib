@@ -28,6 +28,7 @@ public class OwnedSkill extends SkillObject {
 
         if (isSpecialized) {
             skillLevel = creationBaseLevel-1;
+            specializationList.clear();
             specializationList.add(new SpecializationObject(specialization, creationBaseLevel+1));
         } else {
             skillLevel = creationBaseLevel;
@@ -77,29 +78,6 @@ public class OwnedSkill extends SkillObject {
         } else {
             int remainder = baseValue - attributeScore;
             return attributeScore + (remainder * 2);
-        }
-    }
-
-    private class SpecializationObject {
-        private String specializationName;
-        private int specializationLevel;
-
-        public SpecializationObject(String specializationName, int specializationLevel) {
-            this.specializationName = specializationName;
-            this.specializationLevel = specializationLevel;
-        }
-
-        public String getSpecializationName() {
-            return specializationName;
-        }
-
-        public int getSpecializationLevel() {
-            return specializationLevel;
-        }
-
-        @Override
-        public String toString() {
-            return specializationName + " (" + specializationLevel + ")";
         }
     }
 }
