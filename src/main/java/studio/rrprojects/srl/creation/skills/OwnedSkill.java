@@ -19,6 +19,7 @@ public class OwnedSkill extends SkillObject {
     }
 
     public void processSkill(int creationBaseLevel, Boolean isBuildRepair, boolean isSpecialized, String specialization) {
+        // As of right now, this is a creation specific function
         this.creationBaseLevel = creationBaseLevel;
 
         this.isBuildRepair = isBuildRepair;
